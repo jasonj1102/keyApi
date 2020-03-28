@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://172.16.250.42:3306/user_permition
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+server:
+  port: 7003
+dubbo:
+  application:
+    name: key-service-provider
+    id: dubbo-key
+  registry:
+    protocol: zookeeper
+    address: zookeeper://172.16.250.42:2181
+  protocol:
+    port: 20880
+    name: dubbo
+  config-center:
+    protocol: zookeeper
+    address: zookeeper://172.16.250.42:2181
+  scan:
+    base-packages: cn.edu.swpu.wxzx.provider.serviceImpl
+  metadata-report:
+    address: zookeeper://172.16.250.42:2181
